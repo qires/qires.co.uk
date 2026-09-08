@@ -1,0 +1,65 @@
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl font-heading">Q</span>
+                </div>
+                <span class="text-xl font-bold text-navy font-heading">Qires</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-dark-text hover:text-brand transition-colors duration-150 font-medium">About</a>
+                <a href="#services" class="text-dark-text hover:text-brand transition-colors duration-150 font-medium">Services</a>
+                <a href="#features" class="text-dark-text hover:text-brand transition-colors duration-150 font-medium">Why Us</a>
+                <a href="#contact" class="text-dark-text hover:text-brand transition-colors duration-150 font-medium">Contact</a>
+                <a href="#contact" class="px-4 py-2 bg-brand text-white font-medium rounded-lg hover:bg-brand/90 transition-colors duration-150">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-navy" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <div class="flex flex-col gap-2">
+                <a href="#about" class="px-4 py-2 text-dark-text hover:bg-light-gray rounded-lg transition-colors duration-150">About</a>
+                <a href="#services" class="px-4 py-2 text-dark-text hover:bg-light-gray rounded-lg transition-colors duration-150">Services</a>
+                <a href="#features" class="px-4 py-2 text-dark-text hover:bg-light-gray rounded-lg transition-colors duration-150">Why Us</a>
+                <a href="#contact" class="px-4 py-2 text-dark-text hover:bg-light-gray rounded-lg transition-colors duration-150">Contact</a>
+                <a href="#contact" class="px-4 py-2 bg-brand text-white text-center font-medium rounded-lg hover:bg-brand/90 transition-colors duration-150">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        menu.classList.toggle('hidden');
+        if (menu.classList.contains('hidden')) {
+            icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        } else {
+            icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.getElementById('menu-icon').setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        });
+    });
+</script>

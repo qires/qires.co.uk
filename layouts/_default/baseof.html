@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#f79055',
+                        navy: '#1e3a5f',
+                        'navy-light': '#2d4a6f',
+                        'light-gray': '#f8f9fa',
+                        'dark-text': '#2d3748',
+                    },
+                    fontFamily: {
+                        heading: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+                        body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="bg-white text-dark-text font-body antialiased">
+    {{ partial "header.html" . }}
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+</body>
+</html>

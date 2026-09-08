@@ -1,0 +1,7 @@
+build:
+  image: ghcr.io/gohugoio/hugo:v0.165.0
+  script:
+    - hugo
+  artifacts:
+    paths:
+      - public

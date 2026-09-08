@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="py-20 bg-light-gray">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-12 text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold text-navy font-heading">{{ .Title }}</h1>
+        </header>
+        <div class="space-y-8">
+            {{ range .Pages }}
+            <article class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-150">
+                <h2 class="text-xl font-bold text-navy font-heading mb-2">
+                    <a href="{{ .RelPermalink }}" class="hover:text-brand transition-colors duration-150">{{ .Title }}</a>
+                </h2>
+                {{ with .Description }}
+                <p class="text-dark-text/70 mb-4">{{ . }}</p>
+                {{ end }}
+                <a href="{{ .RelPermalink }}" class="text-brand font-medium hover:text-brand/80 transition-colors duration-150">
+                    Read more →
+                </a>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

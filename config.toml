@@ -1,0 +1,14 @@
+baseURL = "https://qires.co.uk/"
+locale = "en-GB"
+title = "Qires"
+
+[params]
+  brand_color = "#f79055"
+  navy_color = "#1e3a5f"
+  white = "#ffffff"
+  light_gray = "#f8f9fa"
+  dark_text = "#2d3748"
+
+[markup]
+  [markup.highlight]
+    codeFences = true

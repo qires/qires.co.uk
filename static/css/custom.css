@@ -1,0 +1,102 @@
+/* Custom styles for Qires */
+
+/* Smooth scroll offset for sticky header */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* Focus styles */
+*:focus-visible {
+    outline: 2px solid #f79055;
+    outline-offset: 2px;
+}
+
+/* Prose styling for markdown content */
+.prose h1, .prose h2, .prose h3 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: #1e3a5f;
+}
+
+.prose h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.prose h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.prose p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+}
+
+.prose ul, .prose ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.prose li {
+    margin-bottom: 0.5rem;
+}
+
+.prose strong {
+    font-weight: 600;
+    color: #1e3a5f;
+}
+
+.prose a {
+    color: #f79055;
+    text-decoration: underline;
+}
+
+.prose a:hover {
+    color: #e07d44;
+}
+
+.prose blockquote {
+    border-left: 4px solid #f79055;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #2d3748;
+    margin: 1.5rem 0;
+}
+
+/* Form focus states */
+input:focus, textarea:focus {
+    border-color: #f79055;
+    box-shadow: 0 0 0 3px rgba(247, 144, 85, 0.1);
+}
+
+/* Card hover effects */
+.service-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for fade-in on scroll */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
