@@ -1,7 +1,7 @@
 build:
+  image: ghcr.io/gohugoio/hugo:v0.165.0
   script:
-    - docker pull ghcr.io/gohugoio/hugo:v0.165.0
-    - docker run ghcr.io/gohugoio/hugo:v0.165.0 build
+    - hugo build
   artifacts:
     paths:
       - public
