@@ -1,14 +1,46 @@
 baseURL = "https://qires.co.uk/"
 locale = "en-GB"
-title = "Qires"
+title = "QI Resolved"
+
+# A single-page site: no taxonomy listings to generate.
+disableKinds = ["taxonomy", "term"]
 
 [params]
-  brand_color = "#f79055"
-  navy_color = "#1e3a5f"
-  white = "#ffffff"
-  light_gray = "#f8f9fa"
-  dark_text = "#2d3748"
+  tagline = "A new workflow for quinquennial inspections"
+  description = "QI Resolved is an app for quinquennial inspectors: survey on site, pin defects to the plan, compare against the last cycle and export a finished report."
+  email = "hello@qires.co.uk"
+
+  # Palette — primarily the logo, secondarily the website mockup.
+  orange       = "#F36B22"  # logo: arch and vertical bar
+  navy         = "#22346E"  # logo: horizontal rule and circle arc
+  slate        = "#3C5553"  # logo: orange/navy overlap
+  orange_deep  = "#B24A12"  # derived for AA contrast on cream
+  cream        = "#FAF5D8"  # mockup: page ground
+  cream_deep   = "#F4EBC4"  # mockup: panels
+  orange_soft  = "#F7A96B"  # mockup: hairlines
+
+  [[params.sections]]
+    id = "our-story"
+    label = "Our Story"
+    image = "img/church-1.jpg"
+
+  [[params.sections]]
+    id = "pricing"
+    label = "Pricing"
+    image = "img/church-2.jpg"
+
+  [[params.sections]]
+    id = "our-partners"
+    label = "Our Partners"
+    image = "img/church-3.jpg"
+
+  [[params.sections]]
+    id = "disclaimer"
+    label = "Disclaimer"
+    image = "img/church-4.jpg"
 
 [markup]
   [markup.highlight]
     codeFences = true
+  [markup.goldmark.renderer]
+    unsafe = true

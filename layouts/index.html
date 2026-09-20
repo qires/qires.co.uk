@@ -1,330 +1,149 @@
 {{ define "main" }}
-<!-- Hero Section -->
-<section id="hero" class="relative bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <div class="inline-block px-4 py-2 bg-brand/10 text-brand rounded-full text-sm font-medium">
-                    Welcome to Qires
-                </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight font-heading">
-                    Innovative Solutions for Modern Business
-                </h1>
-                <p class="text-lg text-dark-text/80 max-w-xl">
-                    We help organisations transform challenges into opportunities through strategic consulting, digital transformation, and cutting-edge technology solutions.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#services" class="inline-flex items-center px-6 py-3 bg-brand text-white font-semibold rounded-lg hover:bg-brand/90 transition-colors duration-150">
-                        Our Services
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                    <a href="#contact" class="inline-flex items-center px-6 py-3 border-2 border-navy text-navy font-semibold rounded-lg hover:bg-navy hover:text-white transition-colors duration-150">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -top-4 -right-4 w-72 h-72 bg-brand/20 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-4 -left-4 w-72 h-72 bg-navy/10 rounded-full blur-3xl"></div>
-                <div class="relative bg-gradient-to-br from-brand/10 to-navy/10 rounded-2xl p-8 lg:p-12">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white rounded-xl p-6 shadow-sm">
-                            <div class="text-3xl font-bold text-brand font-heading">50+</div>
-                            <div class="text-sm text-dark-text/70 mt-1">Projects Delivered</div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 shadow-sm">
-                            <div class="text-3xl font-bold text-navy font-heading">98%</div>
-                            <div class="text-sm text-dark-text/70 mt-1">Client Satisfaction</div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 shadow-sm">
-                            <div class="text-3xl font-bold text-brand font-heading">15+</div>
-                            <div class="text-sm text-dark-text/70 mt-1">Years Experience</div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 shadow-sm">
-                            <div class="text-3xl font-bold text-navy font-heading">24/7</div>
-                            <div class="text-sm text-dark-text/70 mt-1">Support Available</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{ $email := .Site.Params.email }}
+
+<!-- ===================== Hero ===================== -->
+<section class="pt-10 sm:pt-14">
+    <h1 class="font-extrabold uppercase text-orange leading-[0.95] tracking-tight
+               text-[3rem] sm:text-[4.5rem] lg:text-[5.5rem]">
+        Preserve .<br>Repair .<br>Endure
+    </h1>
+
+    <p class="mt-8 font-bold uppercase tracking-wide text-orange-deep
+              text-base sm:text-lg lg:text-xl">
+        A new workflow for <span class="text-navy">quinquennial inspections</span>
+    </p>
 </section>
 
-<!-- About Section -->
-<section id="about" class="py-20 bg-light-gray">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+<!-- ===================== The two cards ===================== -->
+<section class="mt-10 grid gap-6 md:grid-cols-2">
+    <div class="fade-in rounded-2xl border-[3px] border-orange p-6 sm:p-8">
+        <h2 class="text-center font-bold uppercase tracking-wide text-navy">The new workflow</h2>
+        <dl class="mt-6 space-y-5 text-navy leading-relaxed">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-bold text-navy font-heading mb-6">
-                    About Qires
-                </h2>
-                <div class="space-y-4 text-dark-text/80">
-                    <p>
-                        Qires is a forward-thinking consultancy dedicated to delivering innovative solutions for businesses across diverse industries. With years of experience and a passion for excellence, we help organisations transform challenges into opportunities.
-                    </p>
-                    <p>
-                        Our team of experts brings deep industry knowledge and a proven track record of success. We believe in building lasting partnerships with our clients, working collaboratively to achieve measurable results.
-                    </p>
-                </div>
-                <div class="mt-8 grid grid-cols-2 gap-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-brand/10 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                        </div>
-                        <span class="font-medium text-navy">Innovation</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-brand/10 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                        </div>
-                        <span class="font-medium text-navy">Integrity</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-brand/10 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                        </div>
-                        <span class="font-medium text-navy">Excellence</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-brand/10 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                        </div>
-                        <span class="font-medium text-navy">Collaboration</span>
-                    </div>
-                </div>
+                <dt class="inline font-bold text-orange-deep">Survey</dt>
+                <dd class="inline"> — log defects on site, pinned to the plan.</dd>
             </div>
-            <div class="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 class="text-xl font-bold text-navy font-heading mb-6">Our Mission</h3>
-                <p class="text-dark-text/80 italic">
-                    "To empower businesses through strategic insight, cutting-edge technology, and unwavering commitment to client success."
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-navy font-heading mb-4">
-                Our Services
-            </h2>
-            <p class="text-lg text-dark-text/80 max-w-2xl mx-auto">
-                Comprehensive solutions tailored to meet your unique business needs.
-            </p>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-light-gray rounded-xl p-6 hover:shadow-lg transition-shadow duration-150">
-                <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-navy font-heading mb-2">Strategy & Consulting</h3>
-                <p class="text-sm text-dark-text/70">
-                    Identify growth opportunities and develop actionable roadmaps for sustainable success.
-                </p>
-            </div>
-            <div class="bg-light-gray rounded-xl p-6 hover:shadow-lg transition-shadow duration-150">
-                <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-navy font-heading mb-2">Digital Transformation</h3>
-                <p class="text-sm text-dark-text/70">
-                    Guide your organisation through every stage of its digital journey.
-                </p>
-            </div>
-            <div class="bg-light-gray rounded-xl p-6 hover:shadow-lg transition-shadow duration-150">
-                <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-navy font-heading mb-2">Technology Solutions</h3>
-                <p class="text-sm text-dark-text/70">
-                    Custom software development and system integration for competitive advantage.
-                </p>
-            </div>
-            <div class="bg-light-gray rounded-xl p-6 hover:shadow-lg transition-shadow duration-150">
-                <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-navy font-heading mb-2">Data & Analytics</h3>
-                <p class="text-sm text-dark-text/70">
-                    Transform raw data into actionable insights for data-driven decisions.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Features Section -->
-<section id="features" class="py-20 bg-navy text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold font-heading mb-4">
-                Why Choose Qires?
-            </h2>
-            <p class="text-lg text-white/80 max-w-2xl mx-auto">
-                We combine expertise with innovation to deliver exceptional results.
-            </p>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold font-heading mb-2">Fast Delivery</h3>
-                <p class="text-sm text-white/70">
-                    Quick turnaround times without compromising on quality.
-                </p>
-            </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold font-heading mb-2">Expert Team</h3>
-                <p class="text-sm text-white/70">
-                    Seasoned professionals with deep industry expertise.
-                </p>
-            </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold font-heading mb-2">Proven Results</h3>
-                <p class="text-sm text-white/70">
-                    Track record of successful project deliveries.
-                </p>
-            </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold font-heading mb-2">Competitive Pricing</h3>
-                <p class="text-sm text-white/70">
-                    Transparent pricing that delivers real value.
-                </p>
-            </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364m7-3.636L21 12m0 0a4.5 4.5 0 00-6.364-6.364L12 3.636m0 0L9 6.318"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold font-heading mb-2">Long-term Partnership</h3>
-                <p class="text-sm text-white/70">
-                    We build lasting relationships with our clients.
-                </p>
-            </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold font-heading mb-2">Continuous Support</h3>
-                <p class="text-sm text-white/70">
-                    Ongoing assistance even after project completion.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-bold text-navy font-heading mb-6">
-                    Get in Touch
-                </h2>
-                <p class="text-lg text-dark-text/80 mb-8">
-                    We'd love to hear from you. Whether you have a question about our services, pricing, or anything else, our team is ready to answer all your questions.
-                </p>
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-navy">Email</h4>
-                            <p class="text-dark-text/70">hello@qires.co.uk</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-navy">Phone</h4>
-                            <p class="text-dark-text/70">+44 (0) 20 1234 5678</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-navy">Office</h4>
-                            <p class="text-dark-text/70">123 Business Centre<br>Innovation Park<br>London, EC1A 1BB</p>
-                        </div>
-                    </div>
-                </div>
+                <dt class="inline font-bold text-orange-deep">Compare</dt>
+                <dd class="inline"> — see how each item has moved since the last cycle.</dd>
             </div>
-            <div class="bg-light-gray rounded-2xl p-8">
-                <h3 class="text-xl font-bold text-navy font-heading mb-6">Send Us a Message</h3>
-                <form class="space-y-4">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-navy mb-1">Name</label>
-                        <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all duration-150" placeholder="Your name">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-navy mb-1">Email</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all duration-150" placeholder="your@email.com">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-navy mb-1">Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all duration-150 resize-none" placeholder="Your message..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full px-6 py-3 bg-brand text-white font-semibold rounded-lg hover:bg-brand/90 transition-colors duration-150">
-                        Send Message
-                    </button>
-                </form>
+            <div>
+                <dt class="inline font-bold text-orange-deep">Report</dt>
+                <dd class="inline"> — export a polished, boilerplate-ready PDF.</dd>
             </div>
+        </dl>
+    </div>
+
+    <div class="fade-in rounded-2xl border-[3px] border-orange p-6 sm:p-8">
+        <h2 class="text-center font-bold uppercase tracking-wide text-navy">Our vision</h2>
+        <p class="mt-6 leading-relaxed text-orange-deep">
+            We want every conservation practice managing ecclesiastical buildings to have a
+            workflow that matches the seriousness of the work — reducing admin, preserving
+            institutional memory, and giving more time back to the buildings themselves.
+        </p>
+    </div>
+</section>
+
+<!-- ===================== Our Story ===================== -->
+<section id="our-story" class="mt-20">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-orange tracking-tight">Our story</h2>
+
+    <div class="mt-6 max-w-3xl prose text-navy">
+        <p>
+            A quinquennial inspection is often the first document anyone opens before maintenance,
+            access works, reordering, redevelopment — or disposal.
+        </p>
+        <p>
+            Sorting a long list of defects by location and urgency still means juggling Word, Excel
+            and Pages. Photographing every defect is usually the first thing cut for time. Churches
+            receive pages of findings without knowing where the defects are, or how to locate a
+            particular corbel, hood mould or tower louvre. Items get overlooked, then reappear five
+            years later as costly repairs.
+        </p>
+        <p>
+            <strong>QI Resolved is built for inspectors.</strong> It aids the inspection on site,
+            sorts the list of defects, and produces the report for the client.
+        </p>
+    </div>
+
+    <!-- What the app does -->
+    <h3 class="mt-14 font-bold uppercase tracking-wide text-navy">What the app does</h3>
+    <ul class="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2 xl:grid-cols-3">
+        {{ range hugo.Data.features }}
+        <li class="fade-in border-t-2 border-orange-soft pt-4">
+            <h4 class="font-bold text-orange-deep">{{ .title }}</h4>
+            <p class="mt-1 text-sm leading-relaxed text-slate">{{ .body }}</p>
+        </li>
+        {{ end }}
+    </ul>
+
+    <!-- How it works -->
+    <h3 class="mt-16 font-bold uppercase tracking-wide text-navy">How it works</h3>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl bg-cream-deep p-6 sm:p-8">
+            <h4 class="font-bold text-orange-deep">During the inspection</h4>
+            <ol class="mt-4 space-y-2 text-sm leading-relaxed text-navy list-decimal pl-5">
+                <li>Photograph the floor plan at the start.</li>
+                <li>Photograph the defect in the app.</li>
+                <li>Type the description.</li>
+                <li>Pinpoint the defect on the plan.</li>
+                <li>The app assigns a defect ID from the room.</li>
+            </ol>
         </div>
+        <div class="rounded-2xl bg-cream-deep p-6 sm:p-8">
+            <h4 class="font-bold text-orange-deep">After the inspection</h4>
+            <ol class="mt-4 space-y-2 text-sm leading-relaxed text-navy list-decimal pl-5">
+                <li>Re-shuffle the rooms into the right hierarchy.</li>
+                <li>Group similar defects into a single item.</li>
+                <li>Assign one cost range to the group.</li>
+                <li>Generate the table of contents and export the PDF.</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== Pricing ===================== -->
+<section id="pricing" class="mt-20">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-orange tracking-tight">Pricing</h2>
+    <div class="mt-6 max-w-3xl prose text-navy">
+        <p>
+            Not yet set. QI Resolved is in development and pricing will be published before launch.
+        </p>
+        <p>
+            If you carry out quinquennial inspections and want a say in how it is priced,
+            <a href="mailto:{{ $email }}">get in touch</a>.
+        </p>
+    </div>
+</section>
+
+<!-- ===================== Our Partners ===================== -->
+<section id="our-partners" class="mt-20">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-orange tracking-tight">Our partners</h2>
+    <div class="mt-6 max-w-3xl prose text-navy">
+        <p>
+            We are talking to inspecting architects, surveyors and diocesan advisory committees
+            about how the app should work in practice — and building denomination templates from
+            what they tell us.
+        </p>
+        <p>
+            If your practice would like to shape it,
+            <a href="mailto:{{ $email }}">we would like to hear from you</a>.
+        </p>
+    </div>
+</section>
+
+<!-- ===================== Disclaimer ===================== -->
+<section id="disclaimer" class="mt-20">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-orange tracking-tight">Disclaimer</h2>
+    <div class="mt-6 max-w-3xl prose text-slate">
+        <p>
+            QI Resolved is a tool for inspecting architects and surveyors. It supports professional
+            judgement; it does not replace it. Reports produced with the app remain the
+            responsibility of the inspector who signs them.
+        </p>
+        <p>
+            The app is in development. Features described on this page may change before release.
+        </p>
     </div>
 </section>
 {{ end }}

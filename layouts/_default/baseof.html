@@ -3,49 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="theme-color" content="{{ .Site.Params.cream }}">
+    <link rel="icon" type="image/png" href="{{ "img/favicon.png" | relURL }}">
+    <link rel="apple-touch-icon" href="{{ "img/favicon.png" | relURL }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: '#f79055',
-                        navy: '#1e3a5f',
-                        'navy-light': '#2d4a6f',
-                        'light-gray': '#f8f9fa',
-                        'dark-text': '#2d3748',
+                        /* Primary — sampled from the QI Resolved logo */
+                        orange: {
+                            DEFAULT: '#F36B22',  /* arch and vertical bar     */
+                            deep:    '#B24A12',  /* derived, AA on cream      */
+                            soft:    '#F7A96B',  /* mockup hairlines          */
+                        },
+                        navy:  '#22346E',        /* logo horizontal rule      */
+                        slate: '#3C5553',        /* logo orange/navy overlap  */
+                        /* Secondary — sampled from the website mockup */
+                        cream: {
+                            DEFAULT: '#FAF5D8',  /* page ground               */
+                            deep:    '#F4EBC4',  /* panels                    */
+                        },
                     },
                     fontFamily: {
-                        heading: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
-                        body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-        }
-    </style>
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
 </head>
-<body class="bg-white text-dark-text font-body antialiased">
+<body class="bg-cream text-navy font-sans antialiased">
     {{ partial "header.html" . }}
-    <main>
-        {{ block "main" . }}{{ end }}
-    </main>
+    <div class="mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <div class="lg:grid lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-12 xl:gap-16">
+            {{ partial "nav-rail.html" . }}
+            <main class="min-w-0 pb-16">
+                {{ block "main" . }}{{ end }}
+            </main>
+        </div>
+    </div>
     {{ partial "footer.html" . }}
+    <script src="{{ "js/menu.js" | relURL }}" defer></script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+# The nine features from the QI Resolved proposal, one line each.
+- title: Defect hierarchy
+  body: >-
+    No hardcoded template. Defects are referenced by room, and the hierarchy is
+    sorted once the inspection is done.
+
+- title: Photo to defect
+  body: >-
+    Every photo carries its defect ID, its pin on the plan and its caption from
+    the moment it is taken.
+
+- title: Floor plan pinning
+  body: >-
+    Upload a plan per level and drop a pin per defect. Tap a pin for the photo,
+    description, urgency and cost range.
+
+- title: Grouped costs
+  body: >-
+    Link defects that share one repair — repointing, gutter clearance — so a
+    single cost line never double-counts.
+
+- title: Historic comparison
+  body: >-
+    Carry the last quinquennium forward and mark each item Resolved, Ongoing or
+    Worsened rather than retyping it.
+
+- title: Structure and contents
+  body: >-
+    Practice boilerplate plus project variables, with a table of contents
+    generated from the headers and live page numbers.
+
+- title: Report generation
+  body: >-
+    Templated PDF export that follows your practice's house style, ready to
+    issue to the client.
+
+- title: Appendices
+  body: >-
+    A checklist for PAT testing, lightning tests and risk assessments, plus a
+    record of asbestos and burial ground surveys.
+
+- title: Denomination templates
+  body: >-
+    A bespoke checklist per denomination, built from what inspectors in the
+    field tell us they need.

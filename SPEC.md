@@ -1,108 +1,103 @@
-# Qires.co.uk — Static Holding Page
+# qires.co.uk — QI Resolved holding page
 
-## 1. Project Overview
-- **Type**: Hugo-based static website
-- **Core functionality**: Brand holding page with sectioned content, mobile-first responsive design
-- **Target users**: Potential clients/visitors viewing the Qires brand
+## 1. Project overview
+- **Type**: Hugo static site, single page with anchored sections
+- **Purpose**: Introduce QI Resolved — an app for quinquennial inspectors — ahead of launch
+- **Audience**: Inspecting architects and surveyors, conservation practices, dioceses
+- **Sources**: `assets/` holds the brand inputs this site is built from — the logo
+  (`QIResolved_Logo_1_AI.png`), the layout mockup (`WEBSITE DESIGN 3_2.jpg`) and the
+  proposal the copy is drawn from (`QI RESOLVED FOR QIR_20260822.pdf`)
 
-## 2. Visual & Rendering Specification
+## 2. Visual specification
 
-### Color Palette
-| Role | Color | Hex |
-|------|-------|-----|
-| Primary (Brand) | Orange | `#f79055` |
-| Navy (Highlights/Text) | Navy Blue | `#1e3a5f` |
-| Background | White | `#ffffff` |
-| Light Gray (Subtle backgrounds) | Light Gray | `#f8f9fa` |
-| Dark Text | Charcoal | `#2d3748` |
+### Colour palette
+Taken **primarily from the logo**, secondarily from the mockup. Contrast ratios are
+measured against the cream page ground.
+
+| Role | Hex | Source | On cream |
+|------|-----|--------|----------|
+| Orange (primary) | `#F36B22` | Logo — the arch and vertical bar | 2.8:1 — display type only |
+| Navy (secondary) | `#22346E` | Logo — the horizontal rule and circle arc | 10.7:1 |
+| Slate (tertiary) | `#3C5553` | Logo — where orange and navy overlap | 7.3:1 |
+| Deep orange | `#B24A12` | Derived from the logo orange | 4.9:1 — AA |
+| Cream (ground) | `#FAF5D8` | Mockup — page background | — |
+| Cream deep (panels) | `#F4EBC4` | Mockup | — |
+| Orange soft (rules) | `#F7A96B` | Mockup | decorative only |
+
+**Avoiding a background/logo conflict.** The logo orange gives 2.8:1 on the mockup's
+cream. That is enough for the hero display type (48px+, weight 800), where the mockup
+uses it deliberately, but not for anything smaller. Every orange element below display
+size therefore uses the derived deep orange at 4.9:1 — rail labels, links, card lead-ins
+and the footer. Navy carries body text at 10.7:1, so cream and navy never compete.
+
+Both colour sets are declared once in `static/css/custom.css` as custom properties, and
+mirrored in the Tailwind config in `layouts/_default/baseof.html` and in `config.toml`
+under `[params]`.
 
 ### Typography
-- **Headings**: "DM Sans" (Google Fonts) — bold, modern sans-serif
-- **Body**: "Inter" (Google Fonts) — clean, readable
-- **Fallbacks**: system-ui, -apple-system, sans-serif
+- **Inter** (Google Fonts), weights 400/500/600/700/800 — one family, matching the mockup
+- Fallbacks: `system-ui`, `-apple-system`, `sans-serif`
+- Display: 800 weight, uppercase, tight tracking
 
 ### Layout
-- **Container**: max-width 1200px, centered
-- **Grid**: Single column mobile, multi-column desktop
-- **Breakpoints**:
-  - Mobile: < 640px
-  - Tablet: 640px – 1024px
-  - Desktop: > 1024px
+- Container: max-width 1400px, centred
+- Desktop (≥1024px): two columns — a 210px sticky section rail on the left, content right
+- Below 1024px: the rail is replaced by a menu button and a slide-down panel
+- Breakpoints follow Tailwind defaults (sm 640, lg 1024, xl 1280)
 
-### Sections
-1. **Header/Navigation** — Sticky, logo + nav links
-2. **Hero** — Brand statement, tagline, CTA button
-3. **About/Services** — Grid of service cards
-4. **Features** — Icon-based feature list
-5. **Contact** — Simple contact form placeholder
-6. **Footer** — Links, copyright
+### The logo lockup
+The mark sits at the top right with a navy rule running the full width of the page and
+straight through it, continuing the horizontal line drawn in the logo itself. The mark is
+cropped so its own navy bar spans its full width; `.logo-rule` is positioned at 63.64% of
+the mark's height with a thickness of 4.95% of it, which keeps the two aligned at any
+`--mark-h`. The wordmark below sets "QI R" in orange and "esolved" in navy.
 
-## 3. Technical Specification
+## 3. Technical specification
+- **Hugo** 0.165+ (`make build` pins 0.165.0 via Docker; CI uses the same)
+- **Tailwind CSS** via the Play CDN, configured inline in `baseof.html`
+- **Vanilla JS only** — `static/js/menu.js` handles the menu, scroll reveal and rail
+  scroll-spy; all three degrade to a usable page if JS fails
 
-### Framework
-- **Hugo** (latest stable)
-- **Tailwind CSS** via CDN or Hugo Pipes
-- **No JavaScript frameworks** — vanilla JS for interactions
-
-### File Structure
 ```
-/
-├── config.toml
-├── content/
-│   ├── about.md
-│   ├── services.md
-│   ├── contact.md
-│   └── _index.md
-├── layouts/
-│   ├── _default/
-│   │   ├── baseof.html
-│   │   ├── list.html
-│   │   └── single.html
-│   ├── index.html
-│   ├── partials/
-│   │   ├── header.html
-│   │   ├── footer.html
-│   │   ├── hero.html
-│   │   └── features.html
-│   └── sections/
-│       ├── about-section.html
-│       ├── services-section.html
-│       └── contact-section.html
-├── static/
-│   └── css/
-│       └── custom.css
-└── resources/
-    └── _gen/
+config.toml              site config + palette params + section list
+content/_index.md        home page stub
+data/features.yaml       the nine features from the proposal, one line each
+layouts/
+  _default/baseof.html   shell, fonts, Tailwind config
+  _default/list.html     unused fallback, kept in palette
+  _default/single.html   unused fallback, kept in palette
+  index.html             the single page
+  partials/header.html   logo lockup, navy rule, menu button, menu panel
+  partials/nav-rail.html sticky section rail (lg and up)
+  partials/footer.html   rule + copyright
+static/
+  css/custom.css         palette, header geometry, rail, prose
+  js/menu.js             menu, scroll reveal, scroll-spy
+  img/logo-mark.png      cropped glyph, for the header
+  img/logo-full.png      unmodified logo
+  img/favicon.png        512px square
+  img/church-{1..4}.jpg  rail illustrations, cropped from the mockup
 ```
 
-### Hugo Configuration
-- Language: en-GB
-- Title: "Qires"
-- Theme colors defined in params
+### Assets derived from the brand inputs
+- `logo-mark.png` — crop of the logo at x 456–1626, y 292–1788, to the glyph
+- `favicon.png` — 1600px square crop centred on the glyph
+- `church-1..4.jpg` — the four line drawings from the mockup's rail. Their ground is
+  exactly `#FAF5D8`, the same as the page, and they are composited with
+  `mix-blend-mode: darken` so the ground drops out and only the line work shows
 
-## 4. Interaction Specification
+## 4. Content
+Copy is drawn from the QI Resolved proposal and kept deliberately short. The hero,
+the two outlined cards and the section names reproduce the mockup. Sections: hero,
+the new workflow / our vision, Our Story (with the nine features and the on-site and
+post-inspection flows), Pricing, Our Partners, Disclaimer.
 
-### Navigation
-- Mobile: Hamburger menu with slide-out drawer
-- Desktop: Horizontal nav links
-- Smooth scroll to sections on anchor click
-
-### Responsive Behavior
-- Images scale with container
-- Typography scales down on mobile
-- Cards stack vertically on mobile, grid on desktop
-
-### Animations (CSS only)
-- Hover transitions on buttons/cards (150ms ease)
-- Subtle fade-in on scroll for sections
-
-## 5. Acceptance Criteria
-
-- [ ] Hugo site builds without errors
-- [ ] All pages render with correct color scheme (#f79055, navy #1e3a5f, white)
-- [ ] Mobile menu works correctly
-- [ ] All sections display placeholder content
-- [ ] Site is fully responsive (test at 375px, 768px, 1440px)
-- [ ] Tailwind CSS classes applied consistently
-- [ ] Google Fonts load correctly
-- [ ] No console errors on page load
+## 5. Acceptance criteria
+- [x] Hugo builds with no warnings or errors
+- [x] Palette drawn from the logo first, mockup second, with no cream/orange conflict
+      at body sizes
+- [x] Logo mark, wordmark and full-width navy rule align as in the mockup
+- [x] Section rail on desktop; menu button and panel below 1024px
+- [x] No horizontal overflow at 390px; verified at 390, 485 and 1440
+- [x] Menu opens, closes on link click and on Escape
+- [x] `prefers-reduced-motion` honoured for scroll behaviour and reveals

@@ -1,102 +1,243 @@
-/* Custom styles for Qires */
+/* ==========================================================================
+   QI Resolved — brand stylesheet
 
-/* Smooth scroll offset for sticky header */
-section[id] {
-    scroll-margin-top: 80px;
+   Palette is taken primarily from the logo (QIResolved_Logo_1_AI.png) and
+   secondarily from the website mockup (WEBSITE DESIGN 3_2.jpg). Contrast
+   ratios below are measured against the cream page background.
+   ========================================================================== */
+
+:root {
+    /* --- Primary: sampled from the logo ---------------------------------- */
+    --orange:       #F36B22;  /* the arch and vertical bar                   */
+    --navy:         #22346E;  /* the horizontal rule and lower circle arc    */
+    --slate:        #3C5553;  /* where orange and navy overlap in the mark   */
+
+    /* --- Secondary: sampled from the mockup ------------------------------ */
+    --cream:        #FAF5D8;  /* page ground                                 */
+    --cream-deep:   #F4EBC4;  /* panels, hover states                        */
+    --orange-soft:  #F7A96B;  /* hairlines and the footer rule               */
+
+    /* --- Derived, for contrast ------------------------------------------- */
+    /* Logo orange on cream is 2.8:1 — fine for the display headline at
+       48px/800, too weak for anything smaller. Everything below display
+       size uses this deeper burnt orange instead, at 4.9:1 (WCAG AA). */
+    --orange-deep:  #B24A12;
+
+    --rail-w: 210px;
+    --mark-h: 72px;
 }
 
-/* Focus styles */
+@media (max-width: 640px) {
+    :root { --mark-h: 52px; }
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 *:focus-visible {
-    outline: 2px solid #f79055;
-    outline-offset: 2px;
+    outline: 2px solid var(--navy);
+    outline-offset: 3px;
+    border-radius: 2px;
 }
 
-/* Prose styling for markdown content */
-.prose h1, .prose h2, .prose h3 {
-    font-family: 'DM Sans', system-ui, sans-serif;
-    color: #1e3a5f;
+/* Clear the sticky header when jumping to an anchor */
+section[id] {
+    scroll-margin-top: calc(var(--mark-h) + 5rem);
 }
 
-.prose h1 {
-    font-size: 2rem;
+/* --------------------------------------------------------------------------
+   Header: the logo's navy rule is continued across the page, so the mark
+   sits on the line exactly as it does in the mockup.
+   -------------------------------------------------------------------------- */
+
+header { position: relative; }
+
+.logo-row {
+    position: relative;
+    padding-top: 1rem;
+    padding-bottom: .6rem;
+}
+
+/* The mark's own navy bar spans its full width, so the page rule meets it
+   edge to edge. 63.64% / 4.95% are the bar's top and height within the
+   cropped mark, so the two stay aligned at any --mark-h. */
+.logo-rule {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(1rem + var(--mark-h) * 0.6364);
+    height: calc(var(--mark-h) * 0.0495);
+    background: var(--navy);
+}
+
+/* In flow, so the header sizes itself; sits above the page rule */
+.logo-lockup {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    text-align: right;
+    text-decoration: none;
+}
+
+.logo-mark {
+    height: var(--mark-h);
+    width: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.logo-word {
+    display: block;
+    margin-top: .35rem;
+    font-size: calc(var(--mark-h) * 0.22);
     font-weight: 700;
-    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--navy);
 }
 
-.prose h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
+/* --------------------------------------------------------------------------
+   Menu button (small screens) — three orange bars, as drawn in the mockup
+   -------------------------------------------------------------------------- */
+
+.menu-btn {
+    position: absolute;
+    top: calc(1rem + var(--mark-h) * 0.30);
+    left: 0;
+    width: 40px;
+    height: 28px;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
 }
 
-.prose h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+.menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--orange);
+    transition: transform .15s ease, opacity .15s ease;
 }
 
-.prose p {
-    margin-bottom: 1rem;
-    line-height: 1.75;
+.menu-btn span + span { margin-top: 8px; }
+
+.menu-btn.is-open span:nth-child(1) { transform: translateY(12px) rotate(45deg); }
+.menu-btn.is-open span:nth-child(2) { opacity: 0; }
+.menu-btn.is-open span:nth-child(3) { transform: translateY(-12px) rotate(-45deg); }
+
+.mobile-menu {
+    background: var(--cream);
+    border-bottom: 2px solid var(--orange-soft);
 }
 
-.prose ul, .prose ol {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
+.mobile-menu ul {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: .5rem 1.25rem 1.25rem;
 }
 
-.prose li {
-    margin-bottom: 0.5rem;
+.mobile-menu a {
+    display: block;
+    padding: .7rem 0;
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--orange-deep);
+    text-decoration: none;
 }
 
-.prose strong {
-    font-weight: 600;
-    color: #1e3a5f;
+.mobile-menu a:hover { color: var(--navy); }
+
+/* --------------------------------------------------------------------------
+   Section rail (large screens)
+   -------------------------------------------------------------------------- */
+
+.rail-link {
+    display: block;
+    text-decoration: none;
+    text-align: right;
 }
+
+.rail-label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--orange-deep);
+    transition: color .15s ease;
+}
+
+.rail-link:hover .rail-label,
+.rail-link[aria-current="true"] .rail-label {
+    color: var(--navy);
+}
+
+.rail-illustration {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: .5rem;
+    /* The JPEG ground is the same #FAF5D8 as the page, so `darken` drops it
+       out entirely and leaves only the line work. `multiply` would square the
+       cream into a visible darker box. */
+    mix-blend-mode: darken;
+    opacity: .9;
+    transition: opacity .2s ease;
+}
+
+.rail-link:hover .rail-illustration { opacity: 1; }
+
+/* --------------------------------------------------------------------------
+   Prose
+   -------------------------------------------------------------------------- */
+
+.prose p { margin-bottom: 1rem; line-height: 1.7; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { font-weight: 700; color: var(--orange-deep); }
+.prose ul { margin-bottom: 1rem; padding-left: 1.25rem; list-style: disc; }
+.prose li { margin-bottom: .4rem; }
 
 .prose a {
-    color: #f79055;
+    color: var(--orange-deep);
     text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
-.prose a:hover {
-    color: #e07d44;
-}
+.prose a:hover { color: var(--navy); }
 
-.prose blockquote {
-    border-left: 4px solid #f79055;
-    padding-left: 1rem;
-    font-style: italic;
-    color: #2d3748;
-    margin: 1.5rem 0;
-}
+/* --------------------------------------------------------------------------
+   Fade-in on scroll
+   -------------------------------------------------------------------------- */
 
-/* Form focus states */
-input:focus, textarea:focus {
-    border-color: #f79055;
-    box-shadow: 0 0 0 3px rgba(247, 144, 85, 0.1);
-}
-
-/* Card hover effects */
-.service-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
-}
-
-/* Animation for fade-in on scroll */
-.fade-in-section {
+.fade-in {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(16px);
+    transition: opacity .6s ease, transform .6s ease;
 }
 
-.fade-in-section.visible {
+.fade-in.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in { opacity: 1; transform: none; }
 }

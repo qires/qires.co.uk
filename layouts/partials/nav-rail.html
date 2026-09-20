@@ -1,0 +1,17 @@
+{{ $home := .Site.Home.RelPermalink }}
+<aside class="hidden lg:block">
+    <nav class="sticky top-32 pb-16" aria-label="Sections">
+        <ul class="space-y-10">
+            {{ range .Site.Params.sections }}
+            <li>
+                <a href="{{ printf "%s#%s" $home .id }}" class="rail-link">
+                    <span class="rail-label">{{ .label }}</span>
+                    {{ with .image }}
+                    <img src="{{ . | relURL }}" alt="" width="560" height="471" loading="lazy" class="rail-illustration">
+                    {{ end }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</aside>
