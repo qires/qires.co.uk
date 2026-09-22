@@ -220,6 +220,7 @@ This website is a holding page. It has no accounts, no forms and no login.
 - **We set no cookies** and use no analytics or tracking.
 - **Hosting** — the site is served by GitHub Pages. GitHub records the IP address and request details of visitors in its server logs, for security and to deliver the site.
 - **Third-party resources** — pages load fonts from Google Fonts (`fonts.googleapis.com` and `fonts.gstatic.com`) and a stylesheet library from Cloudflare (`cdn.tailwindcss.com`). Requesting those files discloses your IP address and browser details to those providers, who are outside the UK. This is a transfer of personal data, and it happens before you interact with the page. We are reviewing whether to serve these files ourselves and remove the transfer.
+- **Social links** — the footer links to our Facebook, LinkedIn and Instagram pages. These are ordinary links, not embedded widgets, buttons or tracking pixels, so nothing is sent to those platforms unless you choose to follow one. Once you do, that platform's own privacy policy applies.
 - **Email links** — if you email us using an address on this site, we hold that correspondence under section 3.
 
 ## 12. Children

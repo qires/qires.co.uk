@@ -2,18 +2,35 @@
     <div class="lg:grid lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-12 xl:gap-16">
         <div aria-hidden="true"></div>
         <div class="border-t-2 border-orange-soft py-8 text-sm">
-            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <p class="text-orange-deep">
                     &copy; {{ now.Year }} {{ .Site.Title }}. All rights reserved.
                 </p>
-                <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
-                    {{ with .Site.GetPage "/privacy" }}
-                    <a href="{{ .RelPermalink }}"
-                       class="font-semibold text-orange-deep underline underline-offset-4 hover:text-navy">{{ .Title }}</a>
+
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
+                        {{ with .Site.GetPage "/privacy" }}
+                        <a href="{{ .RelPermalink }}"
+                           class="font-semibold text-orange-deep underline underline-offset-4 hover:text-navy">{{ .Title }}</a>
+                        {{ end }}
+                        <a href="mailto:{{ .Site.Params.email }}"
+                           class="font-semibold text-orange-deep underline underline-offset-4 hover:text-navy">Contact</a>
+                    </nav>
+
+                    {{ with .Site.Params.social }}
+                    <ul class="flex items-center -mx-2" role="list">
+                        {{ range . }}
+                        <li>
+                            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer me"
+                               class="inline-flex h-10 w-10 items-center justify-center text-orange-deep hover:text-navy"
+                               aria-label="{{ $.Site.Title }} on {{ .name }} (opens in a new tab)">
+                                {{ partial "icon.html" (dict "name" .icon "class" "w-5 h-5") }}
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
                     {{ end }}
-                    <a href="mailto:{{ .Site.Params.email }}"
-                       class="font-semibold text-orange-deep underline underline-offset-4 hover:text-navy">Contact</a>
-                </nav>
+                </div>
             </div>
         </div>
     </div>

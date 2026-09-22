@@ -19,6 +19,23 @@ disableKinds = ["taxonomy", "term"]
   cream_deep   = "#F4EBC4"  # mockup: panels
   orange_soft  = "#F7A96B"  # mockup: hairlines
 
+  # Social profiles, rendered in the footer as plain links (no embedded
+  # widgets or tracking pixels).
+  [[params.social]]
+    name = "Facebook"
+    icon = "facebook"
+    url = "https://www.facebook.com/profile.php?id=61594029392952"
+
+  [[params.social]]
+    name = "LinkedIn"
+    icon = "linkedin"
+    url = "https://www.linkedin.com/company/qi-resolved/posts"
+
+  [[params.social]]
+    name = "Instagram"
+    icon = "instagram"
+    url = "https://www.instagram.com/qiresolved/"
+
   [[params.sections]]
     id = "our-story"
     label = "Our Story"

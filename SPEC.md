@@ -55,6 +55,10 @@ the mark's height with a thickness of 4.95% of it, which keeps the two aligned a
 ## 3. Technical specification
 - **Hugo** 0.165+ (`make build` pins 0.165.0 via Docker; CI uses the same)
 - **Tailwind CSS** via the Play CDN, configured inline in `baseof.html`
+- **No icon font** — the three social glyphs are inline SVG in `partials/icon.html`,
+  driven by `[[params.social]]` in `config.toml`. Font Awesome was considered and
+  rejected: it would add a third-party request disclosing every visitor's IP address,
+  which is the transfer the privacy policy already flags for Google Fonts and Tailwind
 - **Vanilla JS only** — `static/js/menu.js` handles the menu and the rail scroll-spy.
   The reveal-on-scroll is CSS (`animation-timeline: view()`), guarded by `@supports`
   so the hidden start state only exists where the animation can actually run. An
@@ -74,7 +78,8 @@ layouts/
   _default/_markup/render-table.html  wraps tables so they scroll on a phone
   partials/header.html   logo lockup, navy rule, menu button, menu panel
   partials/nav-rail.html sticky section rail (lg and up)
-  partials/footer.html   rule + copyright
+  partials/footer.html   rule, copyright, legal links, social links
+  partials/icon.html     inline brand glyphs (facebook, linkedin, instagram)
 static/
   css/custom.css         palette, header geometry, rail, prose
   js/menu.js             menu, rail scroll-spy
@@ -109,7 +114,9 @@ the data the app will hold, on four decisions taken with the client:
 
 Section 11 discloses that this website loads Google Fonts and the Tailwind CDN, which
 transmits visitor IP addresses outside the UK before any interaction. Self-hosting those
-files would remove the transfer and let that disclosure be dropped.
+files would remove the transfer and let that disclosure be dropped. It also records that
+the social links are plain links rather than embedded widgets, so nothing reaches those
+platforms unless a visitor clicks.
 
 ## 5. Content
 Copy is drawn from the QI Resolved proposal and kept deliberately short. The hero,
