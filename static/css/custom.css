@@ -10,7 +10,8 @@
     /* --- Primary: sampled from the logo ---------------------------------- */
     --orange:       #F36B22;  /* the arch and vertical bar                   */
     --navy:         #22346E;  /* the horizontal rule and lower circle arc    */
-    --slate:        #3C5553;  /* where orange and navy overlap in the mark   */
+    --slate:        #3C5553;  /* the v01 orange/navy overlap; retained as a
+                                 muted tone (the v02 mark knocks it out)     */
 
     /* --- Secondary: sampled from the mockup ------------------------------ */
     --cream:        #FAF5D8;  /* page ground                                 */
@@ -212,8 +213,78 @@ header { position: relative; }
 .prose p { margin-bottom: 1rem; line-height: 1.7; }
 .prose p:last-child { margin-bottom: 0; }
 .prose strong { font-weight: 700; color: var(--orange-deep); }
-.prose ul { margin-bottom: 1rem; padding-left: 1.25rem; list-style: disc; }
-.prose li { margin-bottom: .4rem; }
+
+.prose h2 {
+    margin: 2.75rem 0 .85rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--orange);
+}
+
+.prose h2:first-child { margin-top: 0; }
+
+.prose h3 {
+    margin: 2rem 0 .6rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--navy);
+}
+
+.prose ul, .prose ol { margin-bottom: 1rem; padding-left: 1.4rem; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li { margin-bottom: .4rem; line-height: 1.65; }
+.prose li > ul, .prose li > ol { margin: .4rem 0 0; }
+
+.prose hr {
+    margin: 2.5rem 0;
+    border: 0;
+    border-top: 2px solid var(--orange-soft);
+}
+
+.prose blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background: var(--cream-deep);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 .5rem .5rem 0;
+}
+
+.prose blockquote p { margin-bottom: .5rem; }
+
+/* Tables scroll rather than widening the page on a phone */
+.prose .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+
+.prose table {
+    width: 100%;
+    min-width: 32rem;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+.prose th, .prose td {
+    padding: .6rem .75rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--orange-soft);
+}
+
+.prose th {
+    font-weight: 700;
+    color: var(--navy);
+    border-bottom-width: 2px;
+}
+
+.prose code {
+    padding: .1em .35em;
+    font-size: .875em;
+    background: var(--cream-deep);
+    border-radius: .25rem;
+    word-break: break-word;
+}
 
 .prose a {
     color: var(--orange-deep);

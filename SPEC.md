@@ -18,7 +18,7 @@ measured against the cream page ground.
 |------|-----|--------|----------|
 | Orange (primary) | `#F36B22` | Logo — the arch and vertical bar | 2.8:1 — display type only |
 | Navy (secondary) | `#22346E` | Logo — the horizontal rule and circle arc | 10.7:1 |
-| Slate (tertiary) | `#3C5553` | Logo — where orange and navy overlap | 7.3:1 |
+| Slate (tertiary) | `#3C5553` | Logo v01 — where orange and navy overlapped. The v02 mark knocks the overlap out, so this is now a retained derived tone rather than a sampled one | 7.3:1 |
 | Deep orange | `#B24A12` | Derived from the logo orange | 4.9:1 — AA |
 | Cream (ground) | `#FAF5D8` | Mockup — page background | — |
 | Cream deep (panels) | `#F4EBC4` | Mockup | — |
@@ -61,12 +61,14 @@ the mark's height with a thickness of 4.95% of it, which keeps the two aligned a
 ```
 config.toml              site config + palette params + section list
 content/_index.md        home page stub
+content/privacy.md       privacy policy, rendered by single.html
 data/features.yaml       the nine features from the proposal, one line each
 layouts/
   _default/baseof.html   shell, fonts, Tailwind config
   _default/list.html     unused fallback, kept in palette
   _default/single.html   unused fallback, kept in palette
   index.html             the single page
+  _default/_markup/render-table.html  wraps tables so they scroll on a phone
   partials/header.html   logo lockup, navy rule, menu button, menu panel
   partials/nav-rail.html sticky section rail (lg and up)
   partials/footer.html   rule + copyright
@@ -86,13 +88,33 @@ static/
   exactly `#FAF5D8`, the same as the page, and they are composited with
   `mix-blend-mode: darken` so the ground drops out and only the line work shows
 
-## 4. Content
+## 4. Privacy policy
+
+`content/privacy.md`, linked from the footer. Written for UK GDPR and the DPA 2018 around
+the data the app will hold, on four decisions taken with the client:
+
+- **Roles** — QI Resolved is controller for account, billing and usage data, and processor
+  for what inspectors record about churches and clients. The policy is split accordingly
+  so a church contact is directed to the inspecting practice, not to us.
+- **Commercial reservation** — limited to irreversibly anonymised and aggregated data
+  (defect prevalence, deterioration rates, cost benchmarks, model training). That falls
+  outside the UK GDPR under Recital 26, so it needs no consent. Reuse of data held as
+  processor is made conditional on the contract with the practice.
+- **Hosting** — UK only, with a transfers section covering any future change.
+- **Entity** — not yet incorporated, so controller identity, company number, registered
+  address and ICO registration number are left as `[bracketed]` placeholders.
+
+Section 11 discloses that this website loads Google Fonts and the Tailwind CDN, which
+transmits visitor IP addresses outside the UK before any interaction. Self-hosting those
+files would remove the transfer and let that disclosure be dropped.
+
+## 5. Content
 Copy is drawn from the QI Resolved proposal and kept deliberately short. The hero,
 the two outlined cards and the section names reproduce the mockup. Sections: hero,
 the new workflow / our vision, Our Story (with the nine features and the on-site and
 post-inspection flows), Pricing, Our Partners, Disclaimer.
 
-## 5. Acceptance criteria
+## 6. Acceptance criteria
 - [x] Hugo builds with no warnings or errors
 - [x] Palette drawn from the logo first, mockup second, with no cream/orange conflict
       at body sizes
@@ -101,3 +123,5 @@ post-inspection flows), Pricing, Our Partners, Disclaimer.
 - [x] No horizontal overflow at 390px; verified at 390, 485 and 1440
 - [x] Menu opens, closes on link click and on Escape
 - [x] `prefers-reduced-motion` honoured for scroll behaviour and reveals
+- [x] Privacy policy renders and is linked from the footer; its tables scroll within
+      their own container rather than widening the page

@@ -2,9 +2,19 @@
     <div class="lg:grid lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-12 xl:gap-16">
         <div aria-hidden="true"></div>
         <div class="border-t-2 border-orange-soft py-8 text-sm">
-            <p class="text-orange-deep">
-                &copy; {{ now.Year }} {{ .Site.Title }}. All rights reserved.
-            </p>
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p class="text-orange-deep">
+                    &copy; {{ now.Year }} {{ .Site.Title }}. All rights reserved.
+                </p>
+                <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
+                    {{ with .Site.GetPage "/privacy" }}
+                    <a href="{{ .RelPermalink }}"
+                       class="font-semibold text-orange-deep underline underline-offset-4 hover:text-navy">{{ .Title }}</a>
+                    {{ end }}
+                    <a href="mailto:{{ .Site.Params.email }}"
+                       class="font-semibold text-orange-deep underline underline-offset-4 hover:text-navy">Contact</a>
+                </nav>
+            </div>
         </div>
     </div>
 </footer>
