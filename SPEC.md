@@ -55,14 +55,17 @@ the mark's height with a thickness of 4.95% of it, which keeps the two aligned a
 ## 3. Technical specification
 - **Hugo** 0.165+ (`make build` pins 0.165.0 via Docker; CI uses the same)
 - **Tailwind CSS** via the Play CDN, configured inline in `baseof.html`
-- **Vanilla JS only** — `static/js/menu.js` handles the menu, scroll reveal and rail
-  scroll-spy; all three degrade to a usable page if JS fails
+- **Vanilla JS only** — `static/js/menu.js` handles the menu and the rail scroll-spy.
+  The reveal-on-scroll is CSS (`animation-timeline: view()`), guarded by `@supports`
+  so the hidden start state only exists where the animation can actually run. An
+  earlier JS version could strand blocks at opacity 0 if the observer missed them
 
 ```
 config.toml              site config + palette params + section list
 content/_index.md        home page stub
 content/privacy.md       privacy policy, rendered by single.html
 data/features.yaml       the nine features from the proposal, one line each
+data/partners.yaml       executive partner profiles (name, role, one line, LinkedIn)
 layouts/
   _default/baseof.html   shell, fonts, Tailwind config
   _default/list.html     unused fallback, kept in palette
@@ -74,7 +77,7 @@ layouts/
   partials/footer.html   rule + copyright
 static/
   css/custom.css         palette, header geometry, rail, prose
-  js/menu.js             menu, scroll reveal, scroll-spy
+  js/menu.js             menu, rail scroll-spy
   img/logo-mark.png      cropped glyph, for the header
   img/logo-full.png      unmodified logo
   img/favicon.png        512px square
@@ -113,6 +116,15 @@ Copy is drawn from the QI Resolved proposal and kept deliberately short. The her
 the two outlined cards and the section names reproduce the mockup. Sections: hero,
 the new workflow / our vision, Our Story (with the nine features and the on-site and
 post-inspection flows), Pricing, Our Partners, Disclaimer.
+
+**Our Partners** profiles the two executive partners — Howard HW Lee on architecture and
+conservation, Roger M Pettett on software and technology — each with a role, a one-line
+description and a LinkedIn link. The word "partners" is used in the practice sense, of the
+principals; the outreach to inspecting practices and diocesan advisory committees sits at
+the end of Our Story instead. The one-line descriptions state each partner's role only.
+**No qualifications, accreditations, employers or years of experience are claimed**,
+because those could not be verified — LinkedIn refuses automated requests. Add them to
+`data/partners.yaml` if you want them stated.
 
 ## 6. Acceptance criteria
 - [x] Hugo builds with no warnings or errors

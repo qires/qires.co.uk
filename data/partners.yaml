@@ -1,0 +1,15 @@
+# Executive partners. Roles were agreed as a split by discipline; the one-line
+# descriptions state each partner's role and make no claim about credentials.
+- name: Howard HW Lee
+  role: Architecture and conservation
+  bio: >-
+    Leads the inspection methodology and the ecclesiastical building knowledge
+    the app is built on.
+  linkedin: https://www.linkedin.com/in/howard-hw-lee-b77aa0178/
+
+- name: Roger M Pettett
+  role: Software and technology
+  bio: >-
+    Leads the design and engineering of the app, from the data model through to
+    report output.
+  linkedin: https://www.linkedin.com/in/rogerpettett/
