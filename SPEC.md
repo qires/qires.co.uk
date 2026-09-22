@@ -112,11 +112,15 @@ the data the app will hold, on four decisions taken with the client:
 - **Entity** — not yet incorporated, so controller identity, company number, registered
   address and ICO registration number are left as `[bracketed]` placeholders.
 
-Section 11 discloses that this website loads Google Fonts and the Tailwind CDN, which
-transmits visitor IP addresses outside the UK before any interaction. Self-hosting those
-files would remove the transfer and let that disclosure be dropped. It also records that
-the social links are plain links rather than embedded widgets, so nothing reaches those
-platforms unless a visitor clicks.
+Section 11 states that the site loads nothing from a third party. That is enforced by the
+build: Tailwind is compiled ahead of time and Inter is self-hosted, so the only external
+URLs in the output are links a visitor chooses to follow (the ICO, and the social
+profiles). The social links are plain links, not embedded widgets, so nothing reaches
+those platforms unless a visitor clicks. Verify with:
+
+```
+grep -rhoE 'https?://[a-zA-Z0-9.-]+' public/*.html public/*/*.html | sort -u
+```
 
 ## 5. Content
 Copy is drawn from the QI Resolved proposal and kept deliberately short. The hero,

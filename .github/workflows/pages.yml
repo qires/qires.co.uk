@@ -18,6 +18,7 @@ concurrency:
 
 env:
   HUGO_VERSION: 0.165.0
+  TAILWIND_VERSION: v4.3.3
 
 jobs:
   build:
@@ -33,6 +34,16 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Build CSS
+        # Compiled here as well as committed, so a deploy can never ship stale
+        # utility classes if someone edits a template without running `make css`.
+        # The standalone binary needs no Node.
+        run: |
+          curl -sfL -o /tmp/tailwindcss \
+            "https://github.com/tailwindlabs/tailwindcss/releases/download/${TAILWIND_VERSION}/tailwindcss-linux-x64"
+          chmod +x /tmp/tailwindcss
+          /tmp/tailwindcss -i assets/css/tailwind.css -o static/css/tailwind.css --minify
 
       - name: Configure Pages
         id: pages

@@ -1,0 +1,27 @@
+/* Tailwind source for QI Resolved.
+   Compiled to static/css/tailwind.css by the standalone Tailwind CLI, which
+   needs no Node at build time — see `make css`. The compiled file is committed
+   so that `hugo build` alone produces a complete site, keeping the Docker
+   Makefile and the Pages workflow free of a JavaScript toolchain. */
+
+@import "tailwindcss";
+
+/* Files to scan for class names. Paths are relative to this file. */
+@source "../../layouts";
+@source "../../content";
+@source "../../data";
+
+/* Palette — primarily the QI Resolved logo, secondarily the website mockup.
+   These mirror the custom properties in static/css/custom.css; keep the two
+   in step. Contrast ratios are measured against the cream ground. */
+@theme {
+    --color-orange:      #F36B22;  /* logo: arch and vertical bar      2.8:1 */
+    --color-orange-deep: #B24A12;  /* derived for body-size text       4.9:1 */
+    --color-orange-soft: #F7A96B;  /* mockup: hairlines           decorative */
+    --color-navy:        #22346E;  /* logo: horizontal rule           10.7:1 */
+    --color-slate:       #3C5553;  /* logo v01 orange/navy overlap     7.3:1 */
+    --color-cream:       #FAF5D8;  /* mockup: page ground                    */
+    --color-cream-deep:  #F4EBC4;  /* mockup: panels                         */
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}

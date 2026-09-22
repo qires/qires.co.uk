@@ -8,36 +8,12 @@
     <meta name="theme-color" content="{{ .Site.Params.cream }}">
     <link rel="icon" type="image/png" href="{{ "img/favicon.png" | relURL }}">
     <link rel="apple-touch-icon" href="{{ "img/favicon.png" | relURL }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        /* Primary — sampled from the QI Resolved logo */
-                        orange: {
-                            DEFAULT: '#F36B22',  /* arch and vertical bar     */
-                            deep:    '#B24A12',  /* derived, AA on cream      */
-                            soft:    '#F7A96B',  /* mockup hairlines          */
-                        },
-                        navy:  '#22346E',        /* logo horizontal rule      */
-                        slate: '#3C5553',        /* logo orange/navy overlap  */
-                        /* Secondary — sampled from the website mockup */
-                        cream: {
-                            DEFAULT: '#FAF5D8',  /* page ground               */
-                            deep:    '#F4EBC4',  /* panels                    */
-                        },
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    {{- /* Everything below is served from this origin: no CDN, no webfont host,
+           so no visitor request reaches a third party. Tailwind is compiled
+           ahead of time by `make css`; Inter is self-hosted in static/fonts. */ -}}
+    <link rel="preload" href="{{ "fonts/inter-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/tailwind.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
 </head>
 <body class="bg-cream text-navy font-sans antialiased">
