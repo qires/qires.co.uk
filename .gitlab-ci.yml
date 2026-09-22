@@ -1,9 +1,33 @@
+# =============================================================================
+# KEEP IN SYNC WITH .github/workflows/pages.yml
+#
+# GitHub Actions publishes the live site. This pipeline builds the same site on
+# GitLab so the mirror stays verifiable. If you change how the site is built
+# here — the Hugo version, the build flags, an added step — make the matching
+# change in the GitHub workflow, and vice versa.
+#
+# Deliberately shared, so they cannot drift:
+#   scripts/build-css.sh   compiles the stylesheet and pins the Tailwind version
+#
+# Still duplicated, so check both when changing:
+#   the Hugo version   — the image tag below, and HUGO_VERSION in the workflow
+#   the build flags    — `hugo build --minify` in both
+#
+# Note this job only builds and keeps an artifact; it does not deploy. GitLab
+# Pages would require the job to be named `pages`.
+# =============================================================================
+
 build:
   image:
     name: ghcr.io/gohugoio/hugo:v0.165.0
     entrypoint: [""]
   script:
-    - hugo build
+    # The stylesheet must be compiled before Hugo runs, or the site ships
+    # without the utility classes the templates depend on. The Hugo image is
+    # Alpine: no bash and no curl, which is why the script is POSIX sh and
+    # falls back to wget.
+    - sh scripts/build-css.sh
+    - hugo build --minify
   artifacts:
     paths:
       - public

@@ -1,3 +1,18 @@
+# =============================================================================
+# KEEP IN SYNC WITH .gitlab-ci.yml
+#
+# This workflow publishes the live site; the GitLab pipeline builds the same
+# site as a check. If you change how the site is built here, make the matching
+# change there, and vice versa.
+#
+# Deliberately shared, so they cannot drift:
+#   scripts/build-css.sh   compiles the stylesheet and pins the Tailwind version
+#
+# Still duplicated, so check both when changing:
+#   the Hugo version   — HUGO_VERSION below, and the image tag in .gitlab-ci.yml
+#   the build flags    — `hugo build --minify` in both
+# =============================================================================
+
 name: Deploy to GitHub Pages
 
 on:
@@ -18,7 +33,6 @@ concurrency:
 
 env:
   HUGO_VERSION: 0.165.0
-  TAILWIND_VERSION: v4.3.3
 
 jobs:
   build:
@@ -38,12 +52,9 @@ jobs:
       - name: Build CSS
         # Compiled here as well as committed, so a deploy can never ship stale
         # utility classes if someone edits a template without running `make css`.
-        # The standalone binary needs no Node.
-        run: |
-          curl -sfL -o /tmp/tailwindcss \
-            "https://github.com/tailwindlabs/tailwindcss/releases/download/${TAILWIND_VERSION}/tailwindcss-linux-x64"
-          chmod +x /tmp/tailwindcss
-          /tmp/tailwindcss -i assets/css/tailwind.css -o static/css/tailwind.css --minify
+        # Same script as GitLab CI and `make css`; the Tailwind version is
+        # pinned inside it. Needs no Node.
+        run: ./scripts/build-css.sh
 
       - name: Configure Pages
         id: pages

@@ -59,6 +59,18 @@ the mark's height with a thickness of 4.95% of it, which keeps the two aligned a
   driven by `[[params.social]]` in `config.toml`. Font Awesome was considered and
   rejected: it would add a third-party request disclosing every visitor's IP address,
   which is the transfer the privacy policy already flags for Google Fonts and Tailwind
+- **Two CI configurations, deliberately shared where it matters** — GitHub Actions
+  (`.github/workflows/pages.yml`) publishes the site; `.gitlab-ci.yml` builds the same
+  site as a cross-check without deploying. Both call `scripts/build-css.sh`, which is the
+  single place the Tailwind version is pinned and the only definition of how the
+  stylesheet is produced. The Hugo version and the `--minify` flag are still duplicated,
+  so both files carry a KEEP IN SYNC header naming exactly what to check.
+
+  The script is POSIX `sh` and falls back from `curl` to `wget` because the GitLab job
+  runs inside the Alpine Hugo image, which has neither `bash` nor `curl`. Alpine is also
+  musl, so the script selects the `-musl` Tailwind build there; the glibc binary will not
+  run on it. It verifies the downloaded binary against the release `sha256sums.txt`
+  before executing it.
 - **Vanilla JS only** — `static/js/menu.js` handles the menu and the rail scroll-spy.
   The reveal-on-scroll is CSS (`animation-timeline: view()`), guarded by `@supports`
   so the hidden start state only exists where the animation can actually run. An
